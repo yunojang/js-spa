@@ -1,4 +1,5 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const WebpackDevServer = require('webpack-dev-server');
 const path = require('path');
 const paths = require('./config/paths');
 const parsedArg = require("yargs").argv;
@@ -56,4 +57,21 @@ const config = {
     }
   },
 }
+
+
+if (isDev) {
+  config.devServer = {
+    port: devserverPort,
+    hot: true,
+    client: {
+      logging: 'warn',
+      overlay: {
+        errors: true,
+        warnings: false,
+      }
+    },
+    historyApiFallback: true,
+  }
+}
+
 module.exports = config;

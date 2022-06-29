@@ -1,4 +1,4 @@
 const App = document.createElement("div");
-App.innerText = "hi app";
+App.innerHTML = "<div>app</div>";
 
 export default App;
