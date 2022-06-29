@@ -3,7 +3,7 @@ import http from "http";
 import { Server } from "socket.io";
 import path from "path";
 
-const PORT = process.env.PORT ?? 8080;
+const PORT = process.env.PORT ?? 8888;
 const HOST = process.env.HOST ?? "localhost";
 
 const clientPath = path.resolve(process.cwd(), "build");
