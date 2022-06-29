@@ -10,6 +10,8 @@ const clientPath = path.resolve(process.cwd(), "build");
 const indexFile = path.resolve(clientPath, "index.html");
 
 const app = express();
+app.use(express.static("build"));
+
 const server = http.createServer(app);
 const io = new Server(server);
 
