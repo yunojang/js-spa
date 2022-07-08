@@ -1,24 +1,24 @@
-import express from "express";
-import http from "http";
-import { Server } from "socket.io";
-import path from "path";
+import express from 'express';
+import http from 'http';
+import { Server } from 'socket.io';
+import path from 'path';
 
 const PORT = process.env.PORT ?? 8888;
-const HOST = process.env.HOST ?? "localhost";
+const HOST = process.env.HOST ?? 'localhost';
 
-const clientPath = path.resolve(process.cwd(), "build");
-const indexFile = path.resolve(clientPath, "index.html");
+const buildPath = path.resolve(process.cwd(), 'build');
+const indexFile = path.resolve(buildPath, 'index.html');
 
 const app = express();
-app.use(express.static("build"));
+app.use(buildPath);
 
 const server = http.createServer(app);
 const io = new Server(server);
 
-app.get("/", (req, res) => res.sendFile(indexFile));
+app.get('/', (req, res) => res.sendFile(indexFile));
 
-io.on("connection", (socket) => {
-  console.log("a user connected");
+io.on('connection', socket => {
+  console.log('a user connected');
 });
 
 server.listen(PORT, () => {
