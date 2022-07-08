@@ -4,20 +4,28 @@ import ProductList from './view/product/ProductList';
 import NotFound from './components/NotFountPage';
 
 interface Route {
-  path: string;
   component: Component;
+  props?: any;
 }
 
-const routes: Route[] = [{ path: '/', component: ProductList }];
+export const paths = {
+  productList: '/',
+};
+
+const routes: { [key: string]: Route } = {
+  [paths.productList]: { component: ProductList },
+};
 
 function Route({ $target }) {
   const { pathname } = location;
 
-  const route = routes.find(route => route.path === pathname);
-  const CurrentComp = route ? route.component : NotFound;
+  const currnet = routes[pathname];
+
+  const CurrentComp = currnet ? currnet.component : NotFound;
+  const compProps = currnet ? currnet.props : {};
 
   this.render = () => {
-    new CurrentComp({ $target }).render();
+    new CurrentComp({ $target, ...compProps }).render();
   };
 }
 
