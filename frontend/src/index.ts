@@ -1,3 +1,4 @@
-const app = document.getElementById('app')!;
+import App from './App';
 
-app.innerText = 'hi';
+const root = document.getElementById('app') ?? document.body;
+new App({ $target: root }).render();
