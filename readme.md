@@ -10,7 +10,7 @@ practice vanilaJs(actually ts), SPA(single page application)
 
 ## run
 
-- server dev (express)
+- server dev (nodemon)
 
 ```
   yarn dev
